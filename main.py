@@ -1,9 +1,6 @@
 import clgame
 from pynput.keyboard import *
 
-levels = [
-    clgame.Scene(fileImport=clgame.Texture("level_empty.txt"))
-    ]
 level = 0
 
 def on_press(key):

@@ -4,13 +4,13 @@ from copy import deepcopy as copy
 skipCharacter = "¤"
 
 class Scene:
-    def __init__(self, size=(0,0), backgroundCharacter="#", fileImport=None): # Either size or fileImport has to be given. size = (width, height)
-        if fileImport == None:
+    def __init__(self, size=(0,0), backgroundCharacter="#", texture=None): # Either size or fileImport has to be given. size = (width, height)
+        if texture == None:
             self.width = size[0]
             self.height = size[1]
             self.canvas = [[backgroundCharacter for i in range(self.width)] for i in range(self.height)]
         else:
-            self.canvas = fileImport.texture
+            self.canvas = texture.texture
             self.height = len(self.canvas)
             self.width = len(self.canvas[0])
         
