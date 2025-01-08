@@ -1,4 +1,5 @@
 import os
+from copy import deepcopy as copy
 
 skipCharacter = "¤"
 
@@ -12,6 +13,8 @@ class Scene:
             self.canvas = fileImport.texture
             self.height = len(self.canvas)
             self.width = len(self.canvas[0])
+        
+        self.baseCanvas = copy(self.canvas)
 
         self.hitboxes = {}
         self.textures = {}
@@ -72,6 +75,7 @@ class Scene:
         printString = self.createPrint()
         os.system('cls' if os.name == 'nt' else 'clear')
         print(printString)
+        self.canvas = copy(self.baseCanvas)
 
     def showTexture(self, texture):
         self.textures[texture].shown = True
