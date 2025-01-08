@@ -113,12 +113,21 @@ class Scene:
 
     def addText(self, text, name):
         self.texts[name] = text
-    
+
+    def collideHitboxes(self, point):
+        hitboxes = []
+
+        for hitbox in self.hitboxes.values():
+            if hitbox.collidePoint(point):
+                hitboxes.append(copy(hitbox))
+        
+        return hitboxes
 class Hitbox:
-    def __init__(self, pos, size): # pos = (x, y), size = (width, height)
+    def __init__(self, pos, size, tags=[]): # pos = (x, y), size = (width, height)
         self.pos = pos
         self.size = size
         self.active = True
+        self.tags = tags
 
     def collidePoint(self, point):
         return point[0] >= self.pos[0] and point[0] < self.pos[0] + self.size[0] and point[1] >= self.pos[1] and point[1] < self.pos[1] + self.size[1] and self.active
